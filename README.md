@@ -33,16 +33,16 @@ Class utama yang digunakan adalah 'KarakterGame'.
 
 ### Java
 
-'''bash
+```bash
 javac KerakterGame.java Main.java
 java Main
-'''
+```
 
 ### PHP
 
-'''bash
+```bash
 php Main.php
-'''
+```
 
 ## Deklarasi Penggunaan AI
 
