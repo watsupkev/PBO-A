@@ -6,13 +6,12 @@ class KarakterGame
 {
     private string $nama;
     private int $hp;
-    private int $level;
+    private int $giliran;
 
     // Constructor
     public function __construct(
         string $nama,
-        int $hp,
-        int $level
+        int $hp
     ) {
         if ($hp < 0) {
             throw new InvalidArgumentException(
@@ -20,15 +19,9 @@ class KarakterGame
             );
         }
 
-        if ($level < 1) {
-            throw new InvalidArgumentException(
-                "Level tidak boleh kurang dari 1"
-            );
-        }
-
         $this->nama = $nama;
         $this->hp = $hp;
-        $this->level = $level;
+        $this->giliran = 0;
     }
 
     // Method serang
@@ -45,27 +38,20 @@ class KarakterGame
             $damage . PHP_EOL;
     }
 
-    // Method menerima damage
-    public function terimaDamage(int $damage): void
+    // Method menghitung giliran
+    public function giliran(): void
     {
-        if ($damage <= 0) {
-            throw new InvalidArgumentException(
-                "Damage harus lebih dari 0"
-            );
-        }
+        $this->giliran++;
 
-        $this->hp -= $damage;
-
-        if ($this->hp < 0) {
-            $this->hp = 0;
-        }
+        echo "Giliran ke-" .
+            $this->giliran . PHP_EOL;
     }
 
     // Method menampilkan karakter
     public function tampilkan(): void
     {
-        echo "Nama  : " . $this->nama . PHP_EOL;
-        echo "HP    : " . $this->hp . PHP_EOL;
-        echo "Level : " . $this->level . PHP_EOL;
+        echo "Nama    : " . $this->nama . PHP_EOL;
+        echo "HP      : " . $this->hp . PHP_EOL;
+        echo "Giliran : " . $this->giliran . PHP_EOL;
     }
 }
